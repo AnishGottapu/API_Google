@@ -5,3 +5,5 @@ Jinja2==2.10.1
 MarkupSafe==1.1.1
 Werkzeug==0.15.5
 pandas>=0.19
+xlrd==1.2.0
+xls-writer==0.2.1
