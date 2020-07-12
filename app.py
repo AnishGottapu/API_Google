@@ -15,8 +15,9 @@ class API_google():
 
     def get_APIs(self, input):
         return_list = []
+        input = input.strip()
         for i in range(self.length):
-            if input in self.df.loc[i][0]:
+            if input.lower() in self.df.loc[i][0]:
                 return_list.append(self.df.loc[i][0])
         return return_list
 
