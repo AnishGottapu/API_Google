@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>add_traffic_stream</title>
+<title>verify_dhcp_client_bind</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13077,24 +13077,22 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<center><font color="Brown" size ="50">add_traffic_stream</font></center>
+<center><font color="#53337c" size ="100"><b>verify_dhcp_client_bind</font></center>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="API-used-to-add-traffic-stream">API used to add traffic stream<a class="anchor-link" href="#API-used-to-add-traffic-stream">&#182;</a></h1><h2 id="Mandatory-Arguments">Mandatory Arguments<a class="anchor-link" href="#Mandatory-Arguments">&#182;</a></h2>
+<h1 id="API-used-to-check-if-DHCP-client-received-IP-from-the-DHCP-server">API used to check if DHCP client received IP from the DHCP server<a class="anchor-link" href="#API-used-to-check-if-DHCP-client-received-IP-from-the-DHCP-server">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">sources</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">A</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">address</span> <span class="n">sources</span>
-    <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="p">[</span><span class="s1">&#39;172.16.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;172.16.50.1&#39;</span><span class="p">,</span> <span class="s1">&#39;172.16.100.1&#39;</span><span class="p">]</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">destinations</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">A</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">addresses</span> <span class="ow">or</span> <span class="n">route</span> <span class="n">ranges</span>
-    <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="p">[</span><span class="s1">&#39;225.0.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;225.1.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;225.1.0.21&#39;</span><span class="p">]</span>
+<h2 id="Mandatory-Arguments">Mandatory Arguments<a class="anchor-link" href="#Mandatory-Arguments">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">device</span><span class="p">:</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Device</span> <span class="n">Group</span> <span class="n">name</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">protocol</span><span class="p">:</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">ipv4</span><span class="o">/</span><span class="n">ipv6</span>
 </pre></div>
 
 </div>
@@ -13103,60 +13101,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Optional-Arguments">Optional Arguments<a class="anchor-link" href="#Optional-Arguments">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">traffic_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">The</span> <span class="n">address</span> <span class="n">family</span> <span class="n">that</span> <span class="n">you</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">use</span> <span class="k">for</span>
-    <span class="n">this</span> <span class="n">traffic</span> <span class="n">item</span> <span class="p">[</span><span class="s1">&#39;ipv4&#39;</span><span class="o">|</span><span class="s1">&#39;ipv6&#39;</span><span class="p">]</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">is_mcast_dest</span> <span class="p">(</span><span class="nb">bool</span><span class="p">):</span> <span class="n">Designates</span> <span class="k">if</span> <span class="n">this</span>
-<span class="n">Optional</span> <span class="n">kwargs</span> <span class="p">(</span><span class="k">for</span> <span class="n">creating</span> <span class="n">stream</span> <span class="n">objects</span> <span class="n">via</span> <span class="n">zap</span><span class="p">):</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">src_ports</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Source</span> <span class="n">ports</span><span class="o">.</span> <span class="n">Ex</span><span class="p">:</span> <span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">]</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">dst_ports</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Destionation</span> <span class="n">ports</span><span class="o">.</span> <span class="n">Ex</span><span class="p">:</span> <span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]</span>
-<span class="n">Traffic</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">traffic_item_name</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">The</span> <span class="n">traffic</span> <span class="n">items</span> <span class="n">name</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">src_dest_mesh_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">fullMesh</span><span class="p">,</span><span class="n">manyToMany</span><span class="p">,</span><span class="n">none</span><span class="p">,</span><span class="n">oneToOne</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">route_mesh_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">fullMesh</span><span class="p">,</span><span class="n">oneToOne</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">bidirectional</span> <span class="p">(</span><span class="nb">bool</span><span class="p">):</span> <span class="n">If</span> <span class="n">true</span><span class="p">,</span> <span class="n">enables</span> <span class="n">bidirectional</span> <span class="k">for</span> <span class="n">a</span> <span class="n">traffic</span> <span class="n">item</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">transmit_mode</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">interleaved</span><span class="p">,</span><span class="n">sequential</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">enabled</span> <span class="p">(</span><span class="n">boo</span><span class="p">):</span> <span class="n">If</span> <span class="n">true</span><span class="p">,</span> <span class="n">enable</span> <span class="n">the</span> <span class="n">traffic</span> <span class="n">item</span>
-<span class="n">Frame</span> <span class="n">Payload</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">payload_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">CJPAT</span><span class="p">,</span><span class="n">CRPAT</span><span class="p">,</span><span class="n">custom</span><span class="p">,</span><span class="n">decrementByte</span><span class="p">,</span>
-        <span class="n">decrementWord</span><span class="p">,</span><span class="n">incrementByte</span><span class="p">,</span><span class="n">incrementWord</span><span class="p">,</span><span class="n">random</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">payload_custom_pattern</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">The</span> <span class="n">custom</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="nb">hex</span> <span class="nb">format</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">payload_custom_repeat</span> <span class="p">(</span><span class="nb">bool</span><span class="p">):</span> <span class="n">If</span> <span class="n">true</span><span class="p">,</span> <span class="n">repeat</span> <span class="n">the</span> <span class="n">custom</span> <span class="n">pattern</span>
-<span class="n">Frame</span> <span class="n">Rate</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">rate_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">bitsPerSecond</span><span class="p">,</span><span class="n">framesPerSecond</span><span class="p">,</span>
-        <span class="n">interPacketGap</span><span class="p">,</span><span class="n">percentLineRate</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">bit_rate_units</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">bitsPerSec</span><span class="p">,</span><span class="n">bytesPerSec</span><span class="p">,</span><span class="n">kbitsPerSec</span><span class="p">,</span>
-        <span class="n">kbytesPerSec</span><span class="p">,</span><span class="n">mbitsPerSec</span><span class="p">,</span><span class="n">mbytesPerSec</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_rate</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">The</span> <span class="n">frame</span> <span class="n">transmission</span> <span class="n">rate</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">enforce_min_inter_packet_gap</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Sets</span> <span class="n">the</span> <span class="n">minimum</span> <span class="n">inter</span><span class="o">-</span><span class="n">packet</span> <span class="n">gap</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">inter_packet_gap_units_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="nb">bytes</span><span class="p">,</span><span class="n">nanoseconds</span>
-<span class="n">Frame</span> <span class="n">Rate</span> <span class="n">Distribution</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">port_distribution</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">applyRateToAll</span><span class="p">,</span><span class="n">splitRateEvenly</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">stream_distribution</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">applyRateToAll</span><span class="p">,</span><span class="n">splitRateEvenly</span>
-<span class="n">Frame</span> <span class="n">Size</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_type</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">auto</span><span class="p">,</span><span class="n">fixed</span><span class="p">,</span><span class="n">increment</span><span class="p">,</span><span class="n">presetDistribution</span><span class="p">,</span>
-         <span class="n">quadGaussian</span><span class="p">,</span><span class="n">random</span><span class="p">,</span><span class="n">weightedPairs</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_fixed_size</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Sets</span> <span class="n">a</span> <span class="n">fixed</span> <span class="n">frame</span> <span class="n">size</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_increment_start</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Specifies</span> <span class="n">the</span> <span class="n">Start</span> <span class="n">Value</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Frame</span>
-        <span class="n">Size</span> <span class="ow">is</span> <span class="n">incremented</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_increment_stop</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Specifies</span> <span class="n">the</span> <span class="n">Final</span> <span class="n">Value</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Frame</span>
-        <span class="n">Size</span> <span class="ow">is</span> <span class="n">Incremented</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_increment_step</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Specifies</span> <span class="n">the</span> <span class="n">Step</span> <span class="n">Value</span> <span class="k">if</span> <span class="n">the</span> <span class="n">Frame</span>
-        <span class="n">Size</span> <span class="ow">is</span> <span class="n">Incremented</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_preset_distribution</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">Options</span> <span class="n">are</span> <span class="n">cisco</span><span class="p">,</span><span class="n">imix</span><span class="p">,</span><span class="n">ipSecImix</span><span class="p">,</span><span class="n">ipV6Imix</span><span class="p">,</span>
-        <span class="n">prQuar</span><span class="p">,</span><span class="n">rprTri</span><span class="p">,</span><span class="n">standardImix</span><span class="p">,</span><span class="n">tcpImix</span><span class="p">,</span><span class="n">tolly</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_quad_gaussian</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Please</span> <span class="n">reference</span> <span class="n">the</span> <span class="n">below</span> <span class="n">address</span> <span class="k">for</span> <span class="n">details</span>
-        <span class="o">&lt;</span><span class="n">IXIA_API_SERVER</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">25445</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">meta</span><span class="o">/</span><span class="n">traffic</span><span class="o">/</span><span class="n">trafficItem</span><span class="o">/</span><span class="n">configElement</span><span class="o">/</span><span class="n">frameSize</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_random_min</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Minimum</span> <span class="n">frame</span> <span class="n">size</span> <span class="n">length</span> <span class="p">(</span><span class="ow">in</span> <span class="nb">bytes</span><span class="p">)</span><span class="o">.</span> <span class="n">Max</span> <span class="ow">is</span> <span class="mi">64</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_random_max</span> <span class="p">(</span><span class="nb">int</span><span class="p">):</span> <span class="n">Maximum</span> <span class="n">frame</span> <span class="n">size</span> <span class="n">length</span> <span class="p">(</span><span class="ow">in</span> <span class="nb">bytes</span><span class="p">)</span><span class="o">.</span> <span class="n">Max</span> <span class="ow">is</span> <span class="mi">1518</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_weighted_pairs</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Defines</span> <span class="n">the</span> <span class="n">values</span> <span class="k">for</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">weighted</span> <span class="n">pairs</span>
-<span class="p">:</span><span class="n">param</span> <span class="n">frame_size_weighted_pairs_range</span> <span class="p">(</span><span class="nb">list</span><span class="p">):</span> <span class="n">Defines</span> <span class="n">the</span> <span class="nb">range</span> <span class="k">for</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">weighted</span> <span class="n">pairs</span>
+<h2 id="Optional-Arguments">Optional Arguments<a class="anchor-link" href="#Optional-Arguments">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">param</span> <span class="n">kwargs</span><span class="p">:</span> <span class="n">port_name</span> <span class="p">(</span><span class="nb">str</span><span class="p">):</span> <span class="n">IXIA</span><span class="o">-</span><span class="n">name</span> <span class="n">of</span> <span class="n">port</span> <span class="n">to</span> <span class="n">which</span> <span class="n">device</span> <span class="n">group</span> <span class="ow">is</span> <span class="n">affiliated</span><span class="p">(</span><span class="n">Ex</span><span class="p">:</span> <span class="s1">&#39;1/7&#39;</span><span class="p">)</span>
+<span class="p">:</span><span class="n">param</span> <span class="n">expected_blockstate</span><span class="p">:</span> <span class="s1">&#39;IDLE&#39;</span><span class="o">/</span><span class="s1">&#39;BOUND&#39;</span>
 </pre></div>
 
 </div>
@@ -13165,14 +13111,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Return">Return<a class="anchor-link" href="#Return">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="p">:</span><span class="k">return</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;traffic&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ixnetwork_restpy</span><span class="o">.</span><span class="n">testplatform</span><span class="o">.</span><span class="n">sessions</span><span class="o">.</span><span class="n">ixnetwork</span><span class="o">.</span><span class="n">traffic</span><span class="o">.</span><span class="n">trafficitem</span><span class="o">.</span><span class="n">trafficitem</span><span class="o">.</span><span class="n">TrafficItem</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x00000261696A95E8</span><span class="o">&gt;</span><span class="p">,</span> <span class="s1">&#39;endpoint_sets&#39;</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">ixnetwork_restpy</span><span class="o">.</span><span class="n">testplatform</span><span class="o">.</span><span class="n">sessions</span><span class="o">.</span><span class="n">ixnetwork</span><span class="o">.</span><span class="n">traffic</span><span class="o">.</span><span class="n">trafficitem</span><span class="o">.</span><span class="n">endpointset</span><span class="o">.</span><span class="n">endpointset</span><span class="o">.</span><span class="n">EndpointSet</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x00000261697B5AF8</span><span class="o">&gt;</span><span class="p">}</span>
+<h2 id="Return">Return<a class="anchor-link" href="#Return">&#182;</a></h2><div class="highlight"><pre><span></span><span class="p">:</span><span class="k">return</span><span class="p">:</span> <span class="n">Idle</span> <span class="ow">and</span> <span class="n">Bound</span> <span class="n">items</span> <span class="n">of</span> <span class="n">deviceGroup</span> <span class="ow">in</span> <span class="n">dictionary</span> <span class="nb">format</span><span class="o">.</span> <span class="n">Return</span> <span class="ne">Exception</span> <span class="n">when</span> <span class="n">device</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">config</span>
 </pre></div>
 
 </div>
@@ -13181,23 +13120,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="img/add_traffic_stream.jpg" width=700 height=250/></p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-to-IXIA-session">Connecting to IXIA session<a class="anchor-link" href="#Connecting-to-IXIA-session">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ixia</span> <span class="kn">import</span> <span class="n">IXIA</span>
-<span class="kn">import</span> <span class="nn">pprint</span>
+<h3 id="Connecting-to-IXIA-session">Connecting to IXIA session<a class="anchor-link" href="#Connecting-to-IXIA-session">&#182;</a></h3><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ixia</span> <span class="kn">import</span> <span class="n">IXIA</span>
 <span class="n">apiServerIp</span> <span class="o">=</span> <span class="s2">&quot;127.0.0.1&quot;</span>
 <span class="n">tgnObj</span> <span class="o">=</span> <span class="n">IXIA</span><span class="p">(</span><span class="n">server_ip</span><span class="o">=</span><span class="n">apiServerIp</span><span class="p">)</span>
 <span class="n">tgnObj</span><span class="o">.</span><span class="n">connect_to_session</span><span class="p">()</span>
@@ -13209,14 +13132,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-1">Combination 1<a class="anchor-link" href="#Combination-1">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 1&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 2&#39;</span><span class="p">],</span> <span class="n">traffic_type</span><span class="o">=</span><span class="s1">&#39;eth&#39;</span><span class="p">))</span>
+<h3 id="Use-Case-#1">Use Case #1<a class="anchor-link" href="#Use-Case-#1">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">verify_dhcp_client_bind</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;Device1&quot;</span> <span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;ipv4&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13225,14 +13141,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-2">Combination 2<a class="anchor-link" href="#Combination-2">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;eth&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">)</span>
+<h3 id="Use-Case-#2">Use Case #2<a class="anchor-link" href="#Use-Case-#2">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">verify_dhcp_client_bind</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;Device3&quot;</span> <span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;ipv6&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13241,14 +13150,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-3">Combination 3<a class="anchor-link" href="#Combination-3">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;eth&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10.39.64.137/2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10.39.64.137/2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">)</span>
+<h3 id="Use-Case-#3">Use Case #3<a class="anchor-link" href="#Use-Case-#3">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">verify_dhcp_client_bind</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;Device1&quot;</span> <span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;ipv4&#39;</span> <span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;1/7&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13257,14 +13159,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-4">Combination 4<a class="anchor-link" href="#Combination-4">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;eth&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">,</span><span class="n">eth_src_mac</span><span class="o">=</span> <span class="s1">&#39;00:15:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">eth_dst_mac</span><span class="o">=</span> <span class="s1">&#39;00:16:01:00:00:01&#39;</span><span class="p">)</span>
+<h3 id="Use-Case-#4">Use Case #4<a class="anchor-link" href="#Use-Case-#4">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">verify_dhcp_client_bind</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;Device1&quot;</span> <span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;ipv4&#39;</span> <span class="p">,</span> <span class="n">expected_blockstate</span><span class="o">=</span><span class="s1">&#39;BOUND&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -13273,580 +13168,7 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-5">Combination 5<a class="anchor-link" href="#Combination-5">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-6">Combination 6<a class="anchor-link" href="#Combination-6">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10.39.64.137/2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;10.39.64.137/2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-7">Combination 7<a class="anchor-link" href="#Combination-7">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">,</span><span class="n">eth_src_mac</span><span class="o">=</span> <span class="s1">&#39;00:17:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">eth_dst_mac</span><span class="o">=</span> <span class="s1">&#39;00:18:01:00:00:01&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-8">Combination 8<a class="anchor-link" href="#Combination-8">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">,</span><span class="n">eth_src_mac</span><span class="o">=</span> <span class="s1">&#39;00:11:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">eth_dst_mac</span><span class="o">=</span> <span class="s1">&#39;00:12:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">v4_src_value</span><span class="o">=</span><span class="s1">&#39;120.0.0.34&#39;</span><span class="p">,</span> <span class="n">v4_dst_value</span><span class="o">=</span><span class="s2">&quot;120.0.0.38&quot;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-9">Combination 9<a class="anchor-link" href="#Combination-9">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;raw&quot;</span><span class="p">,</span><span class="n">src_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span><span class="n">dst_ports</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">],</span><span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;TenGigE0/2/0/0&#39;</span><span class="p">,</span><span class="n">eth_src_mac</span><span class="o">=</span> <span class="s1">&#39;00:11:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">eth_dst_mac</span><span class="o">=</span> <span class="s1">&#39;00:12:01:00:00:01&#39;</span><span class="p">,</span> <span class="n">v6_src_value</span><span class="o">=</span><span class="s1">&#39;2000:0:0:1::2&#39;</span><span class="p">,</span> <span class="n">v6_dst_value</span><span class="o">=</span><span class="s1">&#39;2000:0:1:1::2&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-10">Combination 10<a class="anchor-link" href="#Combination-10">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.1&#39;</span><span class="p">],</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-11">Combination 11<a class="anchor-link" href="#Combination-11">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[],</span><span class="n">mcast_destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;225.1.0.1&#39;</span><span class="p">],</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-12">Combination 12<a class="anchor-link" href="#Combination-12">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">,</span> <span class="s1">&#39;120.0.0.3&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.1&#39;</span><span class="p">,</span> <span class="s1">&#39;120.0.0.5&#39;</span><span class="p">],</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-13">Combination 13<a class="anchor-link" href="#Combination-13">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.1&#39;</span><span class="p">],</span><span class="n">ip_priority</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span><span class="s2">&quot;valueType&quot;</span><span class="p">:</span> <span class="s2">&quot;valueList&quot;</span><span class="p">,</span><span class="s2">&quot;valueList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;7&quot;</span><span class="p">]}})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-14">Combination 14<a class="anchor-link" href="#Combination-14">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mcast_destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;225.1.0.1&#39;</span><span class="p">],</span><span class="n">ip_priority</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;ipv4&quot;</span><span class="p">,</span><span class="s2">&quot;valueType&quot;</span><span class="p">:</span> <span class="s2">&quot;valueList&quot;</span><span class="p">,</span><span class="s2">&quot;valueList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;7&quot;</span><span class="p">]}})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-15">Combination 15<a class="anchor-link" href="#Combination-15">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::1&#39;</span><span class="p">],</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;ipv6&quot;</span><span class="p">,</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-16">Combination 16<a class="anchor-link" href="#Combination-16">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[],</span><span class="n">mcast_destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ff03::1&#39;</span><span class="p">],</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;ipv6&quot;</span><span class="p">,</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-17">Combination 17<a class="anchor-link" href="#Combination-17">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">,</span><span class="s1">&#39;1000::1&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::1&#39;</span><span class="p">,</span><span class="s1">&#39;1000::2&#39;</span><span class="p">],</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;ipv6&quot;</span><span class="p">,</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-18">Combination 18<a class="anchor-link" href="#Combination-18">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::1&#39;</span><span class="p">],</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;ipv6&quot;</span><span class="p">,</span><span class="n">ip_priority</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;ipv6&quot;</span><span class="p">,</span><span class="s2">&quot;valueType&quot;</span><span class="p">:</span> <span class="s2">&quot;valueList&quot;</span><span class="p">,</span><span class="s2">&quot;valueList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">]}})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-19">Combination 19<a class="anchor-link" href="#Combination-19">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">mcast_destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ff03::1&#39;</span><span class="p">],</span><span class="n">traffic_type</span><span class="o">=</span><span class="s2">&quot;ipv6&quot;</span><span class="p">,</span><span class="n">ip_priority</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;priority&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;ipv6&quot;</span><span class="p">,</span><span class="s2">&quot;valueType&quot;</span><span class="p">:</span> <span class="s2">&quot;valueList&quot;</span><span class="p">,</span><span class="s2">&quot;valueList&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;6&quot;</span><span class="p">]}})</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-20">Combination 20<a class="anchor-link" href="#Combination-20">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;120.0.0.2&#39;</span><span class="p">],</span> <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;bound&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4&#39;</span><span class="p">,</span> <span class="s1">&#39;frame_rate&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;destinations&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;mcast_destinations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;225.1.0.1&#39;</span><span class="p">],</span> <span class="s1">&#39;rate_type&#39;</span><span class="p">:</span> <span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-21">Combination 21<a class="anchor-link" href="#Combination-21">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;1200::2&#39;</span><span class="p">],</span> <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;bound&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv6&#39;</span><span class="p">,</span> <span class="s1">&#39;frame_rate&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;destinations&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;mcast_destinations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ff03::1&#39;</span><span class="p">],</span> <span class="s1">&#39;rate_type&#39;</span><span class="p">:</span> <span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/10&#39;</span><span class="p">}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-22">Combination 22<a class="anchor-link" href="#Combination-22">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 1&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 2&#39;</span><span class="p">],</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">512</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-23">Combination 23<a class="anchor-link" href="#Combination-23">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 6&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 5&#39;</span><span class="p">],</span> <span class="n">traffic_type</span><span class="o">=</span><span class="s1">&#39;ipv6&#39;</span><span class="p">,</span> <span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-24">Combination 24<a class="anchor-link" href="#Combination-24">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 10&#39;</span><span class="p">],</span><span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Device Group 9&#39;</span><span class="p">],</span> <span class="n">traffic_type</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;1/15&#39;</span><span class="p">,</span><span class="n">rate_type</span><span class="o">=</span><span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">frame_size_type</span> <span class="o">=</span> <span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">frame_size_fixed_size</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-25">Combination 25<a class="anchor-link" href="#Combination-25">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;destinations&#39;</span><span class="p">:</span> <span class="p">[],</span>
- <span class="s1">&#39;frame_rate&#39;</span><span class="p">:</span> <span class="mf">9.09090909090909</span><span class="p">,</span>
- <span class="s1">&#39;mcast_destinations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;232.0.0.1&#39;</span><span class="p">],</span>
- <span class="s1">&#39;rate_type&#39;</span><span class="p">:</span> <span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span>
- <span class="s1">&#39;sources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;120.0.0.6&#39;</span><span class="p">,</span><span class="s1">&#39;120.0.0.22&#39;</span><span class="p">],</span>
- <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4 multicast between 1/14 - all&#39;</span><span class="p">,</span>
- <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;bound&#39;</span><span class="p">,</span>
- <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4&#39;</span><span class="p">}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-26">Combination 26<a class="anchor-link" href="#Combination-26">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;destinations&#39;</span><span class="p">:</span> <span class="p">[],</span>
- <span class="s1">&#39;frame_rate&#39;</span><span class="p">:</span> <span class="mf">9.09090909090909</span><span class="p">,</span>
- <span class="s1">&#39;mcast_destinations&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;232.0.0.1&#39;</span><span class="p">],</span>
- <span class="s1">&#39;rate_type&#39;</span><span class="p">:</span> <span class="s1">&#39;percentLineRate&#39;</span><span class="p">,</span>
- <span class="s1">&#39;sources&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;120.0.0.6&#39;</span><span class="p">],</span>
- <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4 multicast between 1/15 - all&#39;</span><span class="p">,</span>
- <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;bound&#39;</span><span class="p">,</span>
- <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv4&#39;</span><span class="p">}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-27">Combination 27<a class="anchor-link" href="#Combination-27">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">vlan_mod_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span>
-                                          <span class="p">{</span><span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">})])</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;eth_src_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0A:0A:0A:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0B:0B:0B:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;L2PE_PECORE_v4&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_mod_dict&#39;</span><span class="p">:</span> <span class="n">vlan_mod_dict</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_value&#39;</span><span class="p">:</span> <span class="s1">&#39;120.0.0.2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_type&#39;</span><span class="p">:</span> <span class="s1">&#39;FIXED&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_fixed_size&#39;</span><span class="p">:</span> <span class="s1">&#39;180&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;120.0.0.2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_dst_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;120.0.0.1&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-28">Combination 28<a class="anchor-link" href="#Combination-28">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">vlan_mod_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span>
-                                          <span class="p">{</span><span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">})])</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;eth_src_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:01:01:01:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:02:02:02:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;L2PE_PECORE_v4_TCP&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_mod_dict&#39;</span><span class="p">:</span> <span class="n">vlan_mod_dict</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_value&#39;</span><span class="p">:</span> <span class="s1">&#39;101.1.1.2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_type&#39;</span><span class="p">:</span> <span class="s1">&#39;FIXED&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_fixed_size&#39;</span><span class="p">:</span> <span class="s1">&#39;180&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_src_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;101.1.1.2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_dst_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;100.1.1.2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v4_protocol&#39;</span><span class="p">:</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;tcp_src_port&#39;</span><span class="p">:</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;tcp_dst_port&#39;</span><span class="p">:</span> <span class="s1">&#39;88&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-29">Combination 29<a class="anchor-link" href="#Combination-29">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">vlan_mod_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span>
-                                          <span class="p">{</span><span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">})])</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;eth_src_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0C:0C:0C:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0D:0D:0D:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;L2PE_PECORE_v6&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_mod_dict&#39;</span><span class="p">:</span> <span class="n">vlan_mod_dict</span><span class="p">,</span>
-          <span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_type&#39;</span><span class="p">:</span> <span class="s1">&#39;FIXED&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;frame_size_fixed_size&#39;</span><span class="p">:</span> <span class="s1">&#39;180&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;ipv6&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v6_src_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v6_src_value&#39;</span><span class="p">:</span> <span class="s1">&#39;100:1:1::2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v6_src_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;100:1:1::2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;v6_dst_addr&#39;</span><span class="p">:</span> <span class="s1">&#39;101:1:1::2&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-30">Combination 30<a class="anchor-link" href="#Combination-30">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">vlan_mod_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">([(</span><span class="mi">1</span><span class="p">,</span>
-                                          <span class="p">{</span><span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">})])</span>
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;L2PE_PECORE_L2traffic&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;eth&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_src_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0E:0E:0E:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:00:0F:0F:0F:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_mod_dict&#39;</span><span class="p">:</span> <span class="n">vlan_mod_dict</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-31">Combination 31<a class="anchor-link" href="#Combination-31">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">vlan_mod_dict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">OrderedDict</span><span class="p">([(</span><span class="mi">10</span><span class="p">,</span>
-                                          <span class="p">{</span><span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                           <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">}),</span>
-                                         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;vlan_mod_id&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;vlan_mod_count&#39;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
-                                              <span class="s1">&#39;vlan_mod_step&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;vlan_mod_mask&#39;</span><span class="p">:</span> <span class="s1">&#39;4095&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;vlan_mod_use_stream&#39;</span><span class="p">:</span> <span class="s1">&#39;false&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;vlan_mod_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">})])</span>
-
-<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;eth&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_mod_dict&#39;</span><span class="p">:</span> <span class="n">vlan_mod_dict</span><span class="p">,</span>
-          <span class="s1">&#39;eth_src_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:01:00:00:00:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac&#39;</span><span class="p">:</span> <span class="s1">&#39;00:10:00:00:00:01&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_src_mac_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_src_mac_count&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;INCR&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;eth_dst_mac_count&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">destinations</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combination-32">Combination 32<a class="anchor-link" href="#Combination-32">&#182;</a></h3>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<div class="highlight"><pre><span></span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;port_name&#39;</span><span class="p">:</span> <span class="s1">&#39;2/9&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_item_name&#39;</span><span class="p">:</span> <span class="s1">&#39;to_PE3_600&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_stream_type&#39;</span><span class="p">:</span> <span class="s1">&#39;raw&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;traffic_type&#39;</span><span class="p">:</span> <span class="s1">&#39;eth&#39;</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_id_start&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-          <span class="s1">&#39;vlan_id_count&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-          <span class="s1">&#39;src_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/9&#39;</span><span class="p">],</span>
-          <span class="s1">&#39;dst_ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2/10&#39;</span><span class="p">]}</span>
-
-<span class="n">tgnObj</span><span class="o">.</span><span class="n">add_traffic_stream</span><span class="p">(</span><span class="n">sources</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;600&#39;</span><span class="p">],</span> <span class="n">destinations</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;600&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<h3 id="Use-Case-#5">Use Case #5<a class="anchor-link" href="#Use-Case-#5">&#182;</a></h3><div class="highlight"><pre><span></span><span class="n">tgnObj</span><span class="o">.</span><span class="n">verify_dhcp_client_bind</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="s2">&quot;Device1&quot;</span> <span class="p">,</span> <span class="n">protocol</span><span class="o">=</span><span class="s1">&#39;ipv4&#39;</span> <span class="p">,</span> <span class="n">port_name</span><span class="o">=</span><span class="s1">&#39;1/7&#39;</span> <span class="p">,</span> <span class="n">expected_blockstate</span><span class="o">=</span><span class="s1">&#39;IDLE&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
